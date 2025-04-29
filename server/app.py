@@ -1,6 +1,6 @@
 from typing import TypedDict, Annotated, Optional
 from langgraph.graph import add_messages, StateGraph, END
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, AIMessageChunk, ToolMessage
 from dotenv import load_dotenv
 from langchain_community.tools.tavily_search import TavilySearchResults
@@ -25,7 +25,7 @@ search_tool = TavilySearchResults(
 
 tools = [search_tool]
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatGroq(model="llama-3.1-8b-instant")
 
 llm_with_tools = llm.bind_tools(tools=tools)
 
